@@ -70,6 +70,7 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
                     noticeTitle.requestFocus();
 
                 } else if (bitmap== null) {
+                    Toast.makeText(UploadNotice.this, "Image is not selected by the user! NOTICE TITLE will be updated", Toast.LENGTH_SHORT).show();
                     uploadData();
                     
                 }else{
