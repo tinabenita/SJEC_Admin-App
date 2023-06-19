@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "907300579632",
-    "project_id": "cat-astrophe-escape",
-    "storage_bucket": "cat-astrophe-escape.appspot.com"
+    "project_number": "640338348412",
+    "project_id": "sjec-app-e9201",
+    "storage_bucket": "sjec-app-e9201.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:907300579632:android:e5df78c9a4b815dba200f5",
+        "mobilesdk_app_id": "1:640338348412:android:83905d36ab703f3a697cf9",
         "android_client_info": {
           "package_name": "com.example.sjecadmin"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "907300579632-spsti3dmiji1vo8csrfqcfjir4rmu4u8.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA74UILwlvsob1Zz7zfVUUn1yEWz01qGcI"
+          "current_key": "AIzaSyDMuzD9I-OSOcJT-iMTxGrLT6bj-usC-cA"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "907300579632-spsti3dmiji1vo8csrfqcfjir4rmu4u8.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

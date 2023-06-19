@@ -88,7 +88,8 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
         bitmap.compress(Bitmap.CompressFormat.JPEG,50,baos);
         byte[] finalImg= baos.toByteArray();
         final StorageReference filePath;
-        filePath=storageReference.child("Notice").child(finalImg+"jpg");
+        filePath = storageReference.child(finalImg + ".jpg");
+
         final UploadTask uploadTask=filePath.putBytes(finalImg);
         uploadTask.addOnCompleteListener(UploadNotice.this, new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
