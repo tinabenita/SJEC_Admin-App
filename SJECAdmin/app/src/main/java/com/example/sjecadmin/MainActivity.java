@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    CardView uploadNotice,addGalleryImage,addEbook;
+    CardView uploadNotice,addGalleryImage,addEbook, faculty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         addEbook = (CardView) findViewById(R.id.addEbook);
         addEbook.setOnClickListener(this);
+
+        faculty = (CardView) findViewById(R.id.faculty);
+        faculty.setOnClickListener(this);
     }
 
     public void onClick(View v){
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.addEbook : it = new Intent(this, com.example.sjecadmin.UploadPdfActivity.class);
                                         startActivity(it); break;
+            case R.id.faculty:  it = new Intent(this, com.example.sjecadmin.faculty.UpdateFaculty.class);
+                startActivity(it); break;
 
         }
     }

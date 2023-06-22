@@ -39,7 +39,7 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
     private Bitmap bitmap;
     private EditText noticeTitle;
     private Button uploadNoticeBtn;
-    private DatabaseReference reference;
+    private DatabaseReference reference, dbRef;
     private StorageReference storageReference;
     String downloadUrl="";
     private ProgressDialog pd;
@@ -118,8 +118,8 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
 
         String title=noticeTitle.getText().toString();
 
-        reference=reference.child("Notice");
-        final String uniqueKey= reference.push().getKey();
+        dbRef=reference.child("Notice");
+        final String uniqueKey= dbRef.push().getKey();
 
         Calendar calForDate=Calendar.getInstance();
         SimpleDateFormat currentDate= new SimpleDateFormat("dd-MM-yy");
@@ -131,7 +131,7 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
 
         NoticeData noticeData=new NoticeData(title,downloadUrl,time,uniqueKey,date);
 
-        reference.child(uniqueKey).setValue(noticeData).addOnSuccessListener(new OnSuccessListener<Void>() {
+        dbRef.child(uniqueKey).setValue(noticeData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 pd.dismiss();;
