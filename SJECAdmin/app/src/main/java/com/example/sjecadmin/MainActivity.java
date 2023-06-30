@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.faculty:  it = new Intent(this, com.example.sjecadmin.faculty.UpdateFaculty.class);
                 startActivity(it); break;
 
+
         }
     }
 }
