@@ -1,6 +1,8 @@
 package com.example.sjecadmin.notice;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,19 +53,41 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
         holder.deleteNoticeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Notice");
-                reference.child(currentItem.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Are you sure you want to delete this notice?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Notice");
+                        reference.child(currentItem.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(context, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        notifyItemRemoved(position);
                     }
                 });
-                notifyItemRemoved(position);
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                AlertDialog dialog=null;
+                try {
+                    dialog = builder.create();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                if(dialog!=null)
+                    dialog.show();
             }
         });
 
