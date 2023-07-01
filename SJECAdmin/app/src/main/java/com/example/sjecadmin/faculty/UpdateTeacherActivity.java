@@ -133,7 +133,7 @@ public class UpdateTeacherActivity extends AppCompatActivity {
             updateTeacherEmail.setError("Empty");
             updateTeacherEmail.requestFocus();
         } else if (bitmap == null) {
-            updateData("");
+            updateData(image);
         } else {
             uploadImage();
         }

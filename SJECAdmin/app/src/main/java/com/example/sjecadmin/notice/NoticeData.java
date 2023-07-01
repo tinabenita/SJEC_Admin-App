@@ -1,4 +1,4 @@
-package com.example.sjecadmin;
+package com.example.sjecadmin.notice;
 
 public class NoticeData {
     String title,image,time,key,date;
